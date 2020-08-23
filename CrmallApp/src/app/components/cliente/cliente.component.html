@@ -1,0 +1,124 @@
+<div class="container main-container">
+  <h3 class="card-title"> <strong>{{formLabel}}</strong></h3>
+
+  <form>
+    <input type="hidden" id="id" formControlName="id">
+    <div class="form-group ">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group" formControlName="name">
+            <label>Nome</label>
+            <input type="text" class="form-control" id="nome">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" formControlName="sexo">
+            <label>Sexo</label>
+            <input type="text" class="form-control" id="sexo">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" formControlName="dataNascimento">
+            <label>Data Nascimento</label>
+            <input type="text" class="form-control" id="dataNascimento">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="cep">
+              <label>Cep</label>
+              <input type="text" class="form-control" id="cep" (blur)="obterCep()">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="logradouro">
+              <label>Logradouro</label>
+              <input type="text" class="form-control" id="logradouro">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="numero">
+              <label>Número</label>
+              <input type="text" class="form-control" id="numero">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="complemento">
+              <label>Complemento</label>
+              <input type="text" class="form-control" id="complemento">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="bairro">
+              <label>Bairro</label>
+              <input type="text" class="form-control" id="bairro">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="cidade">
+              <label>Cidade</label>
+              <input type="text" class="form-control" id="cidade">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" formGroupName="endereco">
+            <div class="form-group" formControlName="estado">
+              <label>Estado</label>
+              <input type="text" class="form-control" id="estado">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-dark">Limpar</button>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-dark" (click)="Salvar()">Salvar</button>
+    </div>
+  </form>
+  <br>
+    <section>
+        <div class="row">
+            <table class="table table-striped table-hover table-dark">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Sexo</td>
+                        <td>Data Nascimento</td>
+                        <td>Cep</td>
+                        <td>Logradouro</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cliente of clientes; let i = index">
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.name}}</td>
+                    <td>{{cliente.sexo}}</td>
+                    <td>{{cliente.dataDeNascimento}}</td>
+                    <td>{{cliente.endereco.cep}}</td>
+                    <td>{{cliente.endereco.logradouro}}</td>
+                      <td><button class="btn btn-light" (click)="Editar(cliente)">Editar</button>&nbsp;&nbsp;<button
+                              class="btn btn-light" (click)="Deletar(cliente.id, i)">Deletar</button></td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
